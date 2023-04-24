@@ -1,0 +1,7 @@
+{
+    "prettier.requireConfig": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "css.customData": ["./.vscode/css-data.json"]
+}

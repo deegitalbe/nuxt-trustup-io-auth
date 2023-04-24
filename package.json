@@ -1,0 +1,61 @@
+{
+  "name": "{ORGANIZATION_NAME}/{MODULE_NAME}",
+  "version": "0.0.1",
+  "description": "{MODULE_DESCRIPTION}",
+  "repository": "{REPOSITORY_URL}",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "nuxi prepare playground",
+    "dev": "yarn generate && nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "build": "nuxt-module-build",
+    "lint": "eslint . --fix",
+    "ts": "vue-tsc --noEmit",
+    "validate": "yarn ts && yarn lint && yarn test",
+    "format": "prettier --write \"src/**/*\"",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "dev:prepare": "nuxt-module-build --stub && yarn generate",
+    "preversion": "yarn validate && yarn test",
+    "version": "yarn format && git add -A src",
+    "postversion": "git push && git push --tags && npm publish",
+    "prepublishOnly": "yarn validate && yarn build",
+    "postinstall": "yarn generate"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.4.2"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
+    "@nuxt/module-builder": "^0.3.0",
+    "@nuxt/schema": "^3.4.2",
+    "@nuxt/test-utils": "^3.4.2",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@types/node": "^18",
+    "autoprefixer": "^10.4.14",
+    "changelogen": "^0.5.3",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nuxt": "^3.4.2",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.7",
+    "tailwindcss": "^3.3.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.30.1",
+    "vue-tsc": "^1.4.4"
+  }
+}
