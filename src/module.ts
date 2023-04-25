@@ -1,5 +1,6 @@
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
 import {
+  addRouteMiddleware,
   addPlugin,
   createResolver,
   defineNuxtModule,
@@ -30,5 +31,15 @@ export default defineNuxtModule<ModuleOptions>({
 
     const { resolve } = createResolver(import.meta.url);
     addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
+
+    // addRouteMiddleware(resolve("./runtime/middleware/auth.global.ts"), () => {
+    //   console.log("middleware added");
+    // });
+
+    addRouteMiddleware({
+      name: "trustupIoAuthMiddleware",
+      path: resolve("./runtime/middleware/auth.ts"),
+      global: true,
+    });
   },
 });

@@ -17,7 +17,7 @@
           <div>
             <div class="text-[300px]">🎉</div>
             <div class="text-2xl text-gray-600 font-thin">
-              {{ $auth }}
+              {{ auth }}
             </div>
           </div>
         </div>
@@ -27,9 +27,17 @@
 </template>
 
 <script setup lang="ts">
+import { useAuth } from "@deegital/vue-trustup-io-auth";
+import { definePageMeta } from "nuxt/dist/pages/runtime";
 import { onMounted, ref } from "#imports";
 
+// definePageMeta({
+//   middleware: "trustupIoAuthMiddleware",
+// });
+
 const isReady = ref<boolean>(false);
+
+const auth = useAuth();
 
 onMounted(() => (isReady.value = true));
 </script>
