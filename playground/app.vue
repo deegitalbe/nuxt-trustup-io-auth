@@ -17,7 +17,7 @@
           <div>
             <div class="text-[300px]">🎉</div>
             <div class="text-2xl text-gray-600 font-thin">
-              Let's build something amazing !
+              {{ $auth }}
             </div>
           </div>
         </div>
@@ -31,5 +31,5 @@ import { onMounted, ref } from "#imports";
 
 const isReady = ref<boolean>(false);
 
-onMounted(() => isReady.value = true);
+onMounted(() => (isReady.value = true));
 </script>

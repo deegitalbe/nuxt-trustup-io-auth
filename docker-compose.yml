@@ -1,8 +1,8 @@
 version: '3.4'
-name: {MODULE_NAME}
+name: nuxt-trustup-io-auth
 services:
   app:
-    container_name: {MODULE_NAME}-app
+    container_name: nuxt-trustup-io-auth-app
     build:
       context: .
       dockerfile: Dockerfile

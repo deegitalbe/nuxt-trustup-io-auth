@@ -3,7 +3,11 @@ dotenv.config();
 
 export default defineNuxtConfig({
   modules: ["../src/module"],
-  {MODULE_CONFIG_KEY}: {},
+  trustupIoAuth: {
+    callbackUrl: "http://localhost:8000",
+    localStorageKey: "auth_token",
+    authBackendUrl: "https://auth.trustup.io",
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
