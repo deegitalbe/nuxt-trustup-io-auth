@@ -1,24 +1,24 @@
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
 import {
+  addImports,
   addPlugin,
   createResolver,
   defineNuxtModule,
-  // createResolver,
-  // addComponent,
-  // addImports,
+  addRouteMiddleware,
 } from "@nuxt/kit";
 import { defu } from "defu";
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+export type ModuleOptions = AuthConstructorOptions;
 
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule<AuthConstructorOptions>({
   meta: {
     name: "@deegital/nuxt-trustup-io-auth",
     configKey: "trustupIoAuth",
   },
-  defaults: {},
   setup(options, nuxt) {
+    const { resolve } = createResolver(import.meta.url);
+
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
       {
@@ -28,7 +28,17 @@ export default defineNuxtModule<ModuleOptions>({
       }
     );
 
-    const { resolve } = createResolver(import.meta.url);
-    addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
+    addPlugin(resolve("./runtime/plugins/auth"));
+
+    addImports({
+      name: "useAuth",
+      from: "@deegital/vue-trustup-io-auth",
+    });
+
+    addRouteMiddleware({
+      name: "trustupIoAuthMiddleware",
+      path: resolve("./runtime/middlewares/auth"),
+      global: true,
+    });
   },
 });

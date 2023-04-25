@@ -17,7 +17,7 @@
           <div>
             <div class="text-[300px]">🎉</div>
             <div class="text-2xl text-gray-600 font-thin">
-              {{ $auth }}
+              <NuxtPage />
             </div>
           </div>
         </div>
@@ -27,9 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "#imports";
+import { onMounted, ref, useAuth } from "#imports";
 
 const isReady = ref<boolean>(false);
+const auth = useAuth();
 
-onMounted(() => (isReady.value = true));
+onMounted(() => {
+  isReady.value = true;
+  auth.check();
+});
 </script>
