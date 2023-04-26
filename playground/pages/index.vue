@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth, onMounted, ref } from "#imports";
+import { onMounted, ref, useAuth } from "#imports";
 
 // definePageMeta({
 //   middleware: "trustupIoAuthMiddleware",

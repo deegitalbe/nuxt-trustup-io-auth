@@ -6,8 +6,4 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useAuth } from "@deegital/vue-trustup-io-auth";
-
-const auth = useAuth();
-</script>
+<script lang="ts" setup></script>

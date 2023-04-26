@@ -10,6 +10,7 @@ import {
   // addImports,
 } from "@nuxt/kit";
 import { defu } from "defu";
+import useAuthConfig from "./runtime/composables/useAuthConfig";
 
 // Module options TypeScript interface definition
 export type ModuleOptions = AuthConstructorOptions;
@@ -19,28 +20,23 @@ export default defineNuxtModule<AuthConstructorOptions>({
     name: "@deegital/nuxt-trustup-io-auth",
     configKey: "trustupIoAuth",
   },
-  setup(options, nuxt) {
+  setup(options, _nuxt) {
     const { resolve } = createResolver(import.meta.url);
 
-    nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
-      nuxt.options.runtimeConfig.public.trustupIoAuth,
-      {
-        callbackUrl: options.callbackUrl,
-        localStorageKey: options.localStorageKey,
-        authBackendUrl: options.authBackendUrl,
-      }
-    );
+    const config = useAuthConfig();
 
-    addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
+    config.create(options);
+
+    // addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
 
     addImports({
       name: "useAuth",
-      from: "@deegital/vue-trustup-io-auth",
+      from: resolve("./runtime/composables/useAuth"),
     });
 
     addRouteMiddleware({
       name: "trustupIoAuthMiddleware",
-      path: resolve("./runtime/middleware/auth.ts"),
+      path: resolve("./runtime/middleware/auth"),
       global: true,
     });
   },
