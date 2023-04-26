@@ -1,16 +1,17 @@
-import { defineNuxtRouteMiddleware, navigateTo, useNuxtApp } from "nuxt/app";
-import { useAuth } from "@deegital/vue-trustup-io-auth";
-
-const auth = useAuth();
+import { defineNuxtRouteMiddleware, navigateTo } from "nuxt/app";
+import { useAuth } from "../composables/useAuth";
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  const app = useNuxtApp();
-  console.log(app.vueApp.config.globalProperties.$auth);
+  const auth = useAuth();
+  // console.log(auth.check().then((response) => c));
+  // if (!auth.check()) {
+  //   return navigateTo(auth.authRedirection(), { external: true });
+  // }
 
-  if (!app.vueApp.config.globalProperties.$auth.check()) {
-    return navigateTo(
-      app.vueApp.config.globalProperties.$auth.authRedirection(),
-      { external: true }
-    );
-  }
+  auth.check().then((response) => {
+    console.log(auth.token);
+    if (!response) {
+      return navigateTo(auth.authRedirection(), { external: true });
+    }
+  });
 });

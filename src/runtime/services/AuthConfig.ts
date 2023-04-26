@@ -1,4 +1,4 @@
-import AuthLogic from "@deegital/vue-trustup-io-auth/dist/lib";
+import { AuthLogic } from "@deegital/vue-trustup-io-auth";
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
 
 class AuthConfig {
