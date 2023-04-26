@@ -4,9 +4,11 @@ import {
   createResolver,
   defineNuxtModule,
   addImports,
+  addComponent,
   // createResolver,
   // addComponent,
   // addImports,
+  extendPages,
 } from "@nuxt/kit";
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
 import { defu } from "defu";
@@ -25,11 +27,19 @@ export default defineNuxtModule<AuthConstructorOptions>({
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
       {
-        callbackUrl: options.callbackUrl,
+        callbackUrl: options.callbackUrl + "/auth/callback",
         authBackendUrl: options.authBackendUrl,
         localStorageKey: options.localStorageKey,
       }
     );
+
+    extendPages((pages) => {
+      pages.push({
+        name: "authComponent",
+        path: "/auth/callback",
+        file: resolve("./runtime/components/AuthComponent.vue"),
+      });
+    });
 
     addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
 
@@ -43,5 +53,11 @@ export default defineNuxtModule<AuthConstructorOptions>({
       path: resolve("./runtime/middleware/auth"),
       global: true,
     });
+
+    // addComponent({
+    //   name: "AuthComponent",
+    //   export: "AuthComponent",
+    //   filePath: resolve("./runtime/components/AuthComponent.vue"),
+    // });
   },
 });
