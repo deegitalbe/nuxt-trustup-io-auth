@@ -36,7 +36,7 @@
     "postinstall": "yarn generate"
   },
   "dependencies": {
-    "@deegital/vue-trustup-io-auth": "^0.0.10",
+    "@deegital/vue-trustup-io-auth": "^0.0.13",
     "@nuxt/kit": "^3.4.2"
   },
   "devDependencies": {

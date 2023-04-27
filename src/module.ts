@@ -4,10 +4,7 @@ import {
   createResolver,
   defineNuxtModule,
   addImports,
-  addComponent,
-  // createResolver,
   // addComponent,
-  // addImports,
   extendPages,
 } from "@nuxt/kit";
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
@@ -37,7 +34,7 @@ export default defineNuxtModule<AuthConstructorOptions>({
       pages.push({
         name: "authComponent",
         path: "/auth/callback",
-        file: resolve("./runtime/components/AuthComponent.vue"),
+        file: resolve("./runtime/pages/AuthComponent.vue"),
       });
     });
 
@@ -53,11 +50,5 @@ export default defineNuxtModule<AuthConstructorOptions>({
       path: resolve("./runtime/middleware/auth"),
       global: true,
     });
-
-    // addComponent({
-    //   name: "AuthComponent",
-    //   export: "AuthComponent",
-    //   filePath: resolve("./runtime/components/AuthComponent.vue"),
-    // });
   },
 });
