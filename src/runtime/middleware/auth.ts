@@ -1,5 +1,4 @@
-import { defineNuxtRouteMiddleware, navigateTo, useRouter } from "nuxt/app";
-import { ref } from "vue";
+import { defineNuxtRouteMiddleware, navigateTo } from "nuxt/app";
 import { useAuth } from "../composables/useAuth";
 
 export default defineNuxtRouteMiddleware(async (to, from) => {

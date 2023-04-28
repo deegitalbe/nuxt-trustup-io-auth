@@ -99,6 +99,42 @@ Start bootstrap script
 npm version patch
 ```
 
+## Usage/Examples
+
+```javascript
+export default defineNuxtConfig({
+  ...
+  trustupIoAuth: {
+    callbackUrl: "http://localhost:8000", // url of the app
+    localStorageKey: "auth_token", // the name of the key for the token
+    authBackendUrl: "https://auth.trustup.io", // Prod or staging ?
+  },
+  ...
+
+```
+In your app.vue you should use the layout to have the loader and hide if not authenticated
+```html
+  <template>
+  <div>
+    <h1>App</h1>
+    <div>
+      <NuxtLayout name="auth-layout">
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
+  </div>
+</template>
+
+```
+If you want to display the user informations you can use the composable useAuth()
+
+```javascript
+    const auth = useAuth();
+
+    console.log(auth.user);
+```
+
+
 ### References
 Nuxt module development [reference](https://nuxt.com/docs/guide/going-further/modules)
 

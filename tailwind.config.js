@@ -1,3 +1,6 @@
+const loaderTailwindPath =
+  require("@deegital/vue-3-trustup-io-loader").loaderTailwindPath;
+// import { loaderTailwindPath } from "@deegital/vue-3-trustup-io-loader";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,6 +11,7 @@ export default {
     "./playground/nuxt.config.{js,ts}",
     "./playground/app.vue",
     "./src/**/*.{js,vue,ts}",
+    loaderTailwindPath,
   ],
   theme: {
     extend: {},

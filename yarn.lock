@@ -286,6 +286,13 @@
   dependencies:
     mime "^3.0.0"
 
+"@deegital/vue-3-trustup-io-loader@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@deegital/vue-3-trustup-io-loader/-/vue-3-trustup-io-loader-0.0.6.tgz#165fe259ad0f45bd19e625d2f95b49df3adf76aa"
+  integrity sha512-9GI8lbcVVdVudzlNW8Ac3TdkOiLMERCpCk5sMZDq9BxBIPaYp7VtoziOyeOjYz5XygGqtLkI76rOmBKOhMooPg==
+  dependencies:
+    vue "^3.2.47"
+
 "@deegital/vue-trustup-io-auth@^0.0.13":
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/@deegital/vue-trustup-io-auth/-/vue-trustup-io-auth-0.0.13.tgz#e36d13a7c4672f0f9ce97d7057219942db4453a0"
