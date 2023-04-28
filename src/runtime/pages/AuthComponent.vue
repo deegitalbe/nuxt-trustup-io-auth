@@ -12,7 +12,7 @@ import { useAuth } from "../composables/useAuth";
 
 const route = useRoute();
 
-const token = route.query.token;
+const token = route.query.token as string;
 
 const auth = useAuth();
 
