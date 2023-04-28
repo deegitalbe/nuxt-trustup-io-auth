@@ -31,7 +31,8 @@
     "dev:prepare": "nuxt-module-build --stub && yarn generate",
     "preversion": "yarn ts && yarn lint",
     "version": "yarn format && git add -A src",
-    "postversion": "git push && git push --tags && npm publish",
+    "postversion": "npm publish",
+    "postpublish": "git push && git push --tags",
     "prepublishOnly": "yarn ts && yarn lint",
     "postinstall": "yarn generate"
   },
