@@ -18,4 +18,3 @@ import { it, expect } from "vitest";
 it("validates true is true", () => {
   expect(true).toBe(true);
 });
-

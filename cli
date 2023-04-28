@@ -21,6 +21,16 @@ if [ "$1" == "stop" ]
         ./stop.sh
 fi
 
+if [ "$1" == "version" ]
+    then 
+        ./version.sh $*
+fi
+
+if [ "$1" == "publish" ]
+    then 
+        ./version.sh $*
+fi
+
 if [ "$1" == "yarn" ]
     then 
         ./app.sh $*
