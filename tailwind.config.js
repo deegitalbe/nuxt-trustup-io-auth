@@ -1,6 +1,7 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
 const loaderTailwindPath =
   require("@deegital/vue-3-trustup-io-loader").loaderTailwindPath;
-// import { loaderTailwindPath } from "@deegital/vue-3-trustup-io-loader";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
