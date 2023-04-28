@@ -1,4 +1,4 @@
-import { UnwrapNestedRefs } from "nuxt/dist/app/compat/capi";
+import { UnwrapNestedRefs } from "vue";
 import { AuthLogic } from "@deegital/vue-trustup-io-auth";
 import useAuthConfig from "./useAuthConfig";
 

@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  ssr: false,
   css: ["~/assets/css/main.css"],
   typescript: {
     strict: true,

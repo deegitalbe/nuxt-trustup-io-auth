@@ -6,6 +6,7 @@ import {
   addImports,
   // addComponent,
   extendPages,
+  addLayout,
 } from "@nuxt/kit";
 import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
 import { defu } from "defu";
@@ -50,5 +51,12 @@ export default defineNuxtModule<AuthConstructorOptions>({
       path: resolve("./runtime/middleware/auth"),
       global: true,
     });
+
+    addLayout(
+      {
+        src: resolve("./runtime/layout/auth-layout.vue"),
+      },
+      "auth-layout"
+    );
   },
 });
