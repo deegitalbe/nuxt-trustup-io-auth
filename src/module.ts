@@ -38,7 +38,7 @@ export default defineNuxtModule<AuthConstructorOptions>({
       });
     });
 
-    addPlugin(resolve("./runtime/plugins/authPluginProxy.ts"));
+    addPlugin(resolve("./runtime/plugins/authPluginProxy"));
 
     addImports({
       name: "useAuth",
