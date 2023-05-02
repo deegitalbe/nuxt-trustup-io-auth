@@ -25,7 +25,6 @@ export default defineNuxtModule<AuthConstructorOptions>({
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
       {
-        callbackUrl: options.callbackUrl + "/auth/callback",
         authBackendUrl: options.authBackendUrl,
         localStorageKey: options.localStorageKey,
       }
@@ -34,7 +33,7 @@ export default defineNuxtModule<AuthConstructorOptions>({
     extendPages((pages) => {
       pages.push({
         name: "authComponent",
-        path: "/auth/callback",
+        path: "/trustup-io/auth/callback",
         file: resolve("./runtime/pages/AuthComponent.vue"),
       });
     });

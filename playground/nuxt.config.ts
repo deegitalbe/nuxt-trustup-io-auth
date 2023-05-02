@@ -4,7 +4,6 @@ dotenv.config();
 export default defineNuxtConfig({
   modules: ["../src/module"],
   trustupIoAuth: {
-    callbackUrl: "http://localhost:8000",
     localStorageKey: "auth_token",
     authBackendUrl: "https://auth.trustup.io",
   },
