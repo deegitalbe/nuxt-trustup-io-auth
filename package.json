@@ -33,8 +33,7 @@
     "version": "yarn format && git add -A src",
     "postversion": "npm publish",
     "postpublish": "git push && git push --tags",
-    "prepublishOnly": "yarn ts && yarn lint",
-    "postinstall": "yarn generate"
+    "prepublishOnly": "yarn ts && yarn lint"
   },
   "dependencies": {
     "@deegital/vue-3-trustup-io-loader": "^0.0.6",
