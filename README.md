@@ -11,12 +11,6 @@ Nuxt module for auth
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/@deegital/nuxt-trustup-io-auth?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
-## Features
-
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
 
 ## Quick Setup
 
@@ -42,6 +36,40 @@ export default defineNuxtConfig({
   ],
   trustupIoAuth: {}
 })
+```
+
+## Usage/Examples
+
+```javascript
+export default defineNuxtConfig({
+  ...
+  trustupIoAuth: {
+    localStorageKey: "auth_token", // the name of the key for the token
+    authBackendUrl: "https://auth.trustup.io", // Prod or staging ?
+  },
+  ...
+
+```
+In your app.vue you should use the layout to have the loader and hide if not authenticated
+```html
+  <template>
+  <div>
+    <h1>App</h1>
+    <div>
+      <NuxtLayout name="auth-layout">
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
+  </div>
+</template>
+
+```
+If you want to display the user informations you can use the composable useAuth()
+
+```javascript
+    const auth = useAuth();
+
+    console.log(auth.user);
 ```
 
 That's it! You can now use nuxt-trustup-io-auth in your Nuxt app ✨
@@ -97,41 +125,6 @@ Start bootstrap script
 
 # Release new version
 npm version patch
-```
-
-## Usage/Examples
-
-```javascript
-export default defineNuxtConfig({
-  ...
-  trustupIoAuth: {
-    callbackUrl: "http://localhost:8000", // url of the app
-    localStorageKey: "auth_token", // the name of the key for the token
-    authBackendUrl: "https://auth.trustup.io", // Prod or staging ?
-  },
-  ...
-
-```
-In your app.vue you should use the layout to have the loader and hide if not authenticated
-```html
-  <template>
-  <div>
-    <h1>App</h1>
-    <div>
-      <NuxtLayout name="auth-layout">
-        <NuxtPage />
-      </NuxtLayout>
-    </div>
-  </div>
-</template>
-
-```
-If you want to display the user informations you can use the composable useAuth()
-
-```javascript
-    const auth = useAuth();
-
-    console.log(auth.user);
 ```
 
 
