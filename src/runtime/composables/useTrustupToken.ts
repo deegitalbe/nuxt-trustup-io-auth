@@ -13,7 +13,7 @@ const useTrustupToken = () => {
     return navigateTo("/");
   }
   // TODO Fix ?
-  token = token.replace("Bearer+", "");
+  token = token.replace("Bearer ", "");
 
   localStorage.setItem(auth.localStorageKey, token);
 
