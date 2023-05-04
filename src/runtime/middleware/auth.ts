@@ -4,8 +4,7 @@ import { useAuth } from "../composables/useAuth";
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const path = window.location.origin + to.fullPath;
 
-  if (from.fullPath === to.fullPath && to.path === "/trustup-io/auth/callback")
-    return;
+  if (from.fullPath === to.fullPath && to.name === "authComponent") return;
 
   const auth = useAuth();
 

@@ -17,8 +17,16 @@ const useTrustupToken = () => {
 
   localStorage.setItem(auth.localStorageKey, token);
 
-  if (typeof path === "string") {
-    return navigateTo(path);
+  if (typeof path !== "string") {
+    return navigateTo("/");
+  }
+
+  if (path.includes("http")) {
+    navigateTo(path, { external: true });
+  }
+
+  if (!path.startsWith("/")) {
+    navigateTo("/" + path);
   }
 };
 

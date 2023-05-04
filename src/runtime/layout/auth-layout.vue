@@ -1,10 +1,7 @@
 <template>
   <div>
     <slot
-      v-if="
-        (!auth.isLoading && auth.user) ||
-        route.path == '/trustup-io/auth/callback'
-      "
+      v-if="(!auth.isLoading && auth.user) || route.name == 'authComponent'"
     />
     <div v-else>
       <AppLoader />
