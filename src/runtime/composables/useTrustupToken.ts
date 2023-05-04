@@ -4,7 +4,7 @@ import { useAuth } from "./useAuth";
 const useTrustupToken = () => {
   const route = useRoute();
 
-  const token = route.query.token;
+  let token = route.query.token;
   const path = route.query.path;
 
   const auth = useAuth();
@@ -12,6 +12,9 @@ const useTrustupToken = () => {
   if (typeof token !== "string") {
     return navigateTo("/");
   }
+  // TODO Fix ?
+  token = token.replace("Bearer+", "");
+
   localStorage.setItem(auth.localStorageKey, token);
 
   if (typeof path === "string") {
