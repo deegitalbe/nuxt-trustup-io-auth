@@ -1,11 +1,14 @@
-import { navigateTo, useRoute } from "nuxt/app";
+import { navigateTo } from "nuxt/app";
 import { useAuth } from "./useAuth";
+import { useQueryParameter } from "./useQueryParameter";
 
 const useTrustupToken = () => {
-  const route = useRoute();
+  let token = useQueryParameter("token");
+  const path = useQueryParameter("path") || useQueryParameter("amp;path");
 
-  let token = route.query.token;
-  const path = route.query.path;
+  if (path === undefined) {
+    navigateTo("/");
+  }
 
   const auth = useAuth();
 
