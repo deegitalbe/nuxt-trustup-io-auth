@@ -2,10 +2,14 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      authTrustupIoUrl: "",
+    },
+  },
   modules: ["../src/module"],
   trustupIoAuth: {
     localStorageKey: "auth_token",
-    authBackendUrl: "https://auth.trustup.io",
   },
   postcss: {
     plugins: {

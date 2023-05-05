@@ -8,13 +8,15 @@ import {
   extendPages,
   addLayout,
 } from "@nuxt/kit";
-import { AuthConstructorOptions } from "@deegital/vue-trustup-io-auth/dist/lib/types";
+
 import { defu } from "defu";
 
 // Module options TypeScript interface definition
-export type ModuleOptions = AuthConstructorOptions;
+export type ModuleOptions = {
+  localStorageKey: string;
+};
 
-export default defineNuxtModule<AuthConstructorOptions>({
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "@deegital/nuxt-trustup-io-auth",
     configKey: "trustupIoAuth",
@@ -25,8 +27,7 @@ export default defineNuxtModule<AuthConstructorOptions>({
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
       {
-        authBackendUrl: options.authBackendUrl,
-        localStorageKey: options.localStorageKey,
+        localStorageKey: options.localStorageKey || "auth_token",
       }
     );
 
@@ -42,7 +43,7 @@ export default defineNuxtModule<AuthConstructorOptions>({
 
     addImports({
       name: "useAuth",
-      from: resolve("./runtime/composables/useAuth"),
+      from: "@deegital/vue-trustup-io-auth",
     });
 
     addRouteMiddleware({

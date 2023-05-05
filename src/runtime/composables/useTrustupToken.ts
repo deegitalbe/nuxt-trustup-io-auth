@@ -1,5 +1,5 @@
 import { navigateTo } from "nuxt/app";
-import { useAuth } from "./useAuth";
+import { useAuth } from "@deegital/vue-trustup-io-auth";
 import { useQueryParameter } from "./useQueryParameter";
 
 const useTrustupToken = () => {

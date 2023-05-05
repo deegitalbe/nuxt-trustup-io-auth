@@ -1,9 +1,12 @@
 import { defineNuxtPlugin, useRuntimeConfig } from "nuxt/app";
-import useAuthConfig from "../composables/useAuthConfig";
+import { authPlugin } from "@deegital/vue-trustup-io-auth";
 
-export default defineNuxtPlugin(() => {
-  const options = useRuntimeConfig().public.trustupIoAuth;
-  const config = useAuthConfig();
+export default defineNuxtPlugin((nuxtApp) => {
+  const moduleOptions = useRuntimeConfig().public.trustupIoAuth;
+  const authTrustupIoUrl = useRuntimeConfig().public.authTrustupIoUrl;
 
-  config.create(options);
+  nuxtApp.vueApp.use(authPlugin, {
+    ...moduleOptions,
+    authBackendUrl: authTrustupIoUrl,
+  });
 });

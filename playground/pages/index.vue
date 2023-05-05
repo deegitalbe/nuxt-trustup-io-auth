@@ -16,6 +16,9 @@
         >
           <div>
             <div class="text-[300px]">🎉</div>
+            <div>
+              {{ $auth.user }}
+            </div>
             <h1>Page index</h1>
             <NuxtLink to="/users">users</NuxtLink>
             <div class="text-2xl text-gray-600 font-thin">

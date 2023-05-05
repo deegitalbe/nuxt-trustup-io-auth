@@ -40,12 +40,20 @@ export default defineNuxtConfig({
 
 ## Usage/Examples
 
+```bash
+NUXT_PUBLIC_AUTH_TRUSTUP_IO_URL=https://auth.trustup.io
+```
+
 ```javascript
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      authTrustupIoUrl: "",
+    },
+  },
   ...
   trustupIoAuth: {
-    localStorageKey: "auth_token", // the name of the key for the token
-    authBackendUrl: "https://auth.trustup.io", // Prod or staging ?
+    localStorageKey: "auth_token", // the name of the key for the token, 'auth_token by default'
   },
   ...
 
