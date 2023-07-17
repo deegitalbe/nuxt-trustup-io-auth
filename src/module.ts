@@ -1,22 +1,18 @@
+import type { AuthPluginInstallOptions } from "@deegital/vue-trustup-io-auth";
+import { TRUSTUP_IO_AUTH_CONFIG } from "@deegital/vue-trustup-io-auth";
 import {
   addRouteMiddleware,
   addPlugin,
   createResolver,
   defineNuxtModule,
   addImports,
-  // addComponent,
   extendPages,
   addLayout,
 } from "@nuxt/kit";
 
 import { defu } from "defu";
 
-// Module options TypeScript interface definition
-export type ModuleOptions = {
-  localStorageKey: string;
-};
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
   meta: {
     name: "@deegital/nuxt-trustup-io-auth",
     configKey: "trustupIoAuth",
@@ -26,37 +22,50 @@ export default defineNuxtModule<ModuleOptions>({
 
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
-      {
-        localStorageKey: options.localStorageKey || "auth_token",
-      }
+      options
     );
 
     extendPages((pages) => {
       pages.push({
-        name: "authComponent",
-        path: "/trustup-io/auth/callback",
-        file: resolve("./runtime/pages/AuthComponent.vue"),
+        name: "trustup-io-auth-callback",
+        path: TRUSTUP_IO_AUTH_CONFIG.AUTH_CALLBACK_PATH,
+        file: resolve("./runtime/pages/trustup-io/auth/callback.vue"),
       });
     });
 
-    addPlugin(resolve("./runtime/plugins/authPluginProxy"));
+    addPlugin(resolve("./runtime/plugins/auth"));
 
     addImports({
       name: "useAuth",
-      from: "@deegital/vue-trustup-io-auth",
+      from: resolve("./runtime/composables/index"),
+    });
+
+    addImports({
+      name: "useAuthCallbackService",
+      from: resolve("./runtime/composables/index"),
+    });
+
+    addImports({
+      name: "useAuthLayoutService",
+      from: resolve("./runtime/composables/index"),
+    });
+
+    addImports({
+      name: "useAuthRedirectService",
+      from: resolve("./runtime/composables/index"),
+    });
+
+    addImports({
+      name: "useVueApp",
+      from: resolve("./runtime/composables/index"),
     });
 
     addRouteMiddleware({
-      name: "trustupIoAuthMiddleware",
+      name: "trustup-io-auth",
       path: resolve("./runtime/middleware/auth"),
       global: true,
     });
 
-    addLayout(
-      {
-        src: resolve("./runtime/layout/auth-layout.vue"),
-      },
-      "auth-layout"
-    );
+    addLayout({ src: resolve("./runtime/layouts/auth.vue") }, "auth");
   },
 });

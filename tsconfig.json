@@ -4,9 +4,5 @@
   "compilerOptions": {
     "noImplicitAny": true
   },
-  "include": [
-    "playground/.nuxt/nuxt.d.ts",
-    "playground/**/*",
-    "src/**/*",
-  ],
+  "include": ["playground/.nuxt/nuxt.d.ts", "playground/**/*", "src/**/*"]
 }

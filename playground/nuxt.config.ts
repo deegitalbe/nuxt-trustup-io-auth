@@ -2,14 +2,14 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 export default defineNuxtConfig({
+  trustupIoAuth: {
+    accessRoles: ["Worksite Admin"],
+  },
+  modules: ["../src/module.ts"],
   runtimeConfig: {
     public: {
-      authTrustupIoUrl: "",
+      trustupIoAuthUrl: "",
     },
-  },
-  modules: ["../src/module"],
-  trustupIoAuth: {
-    localStorageKey: "auth_token",
   },
   postcss: {
     plugins: {
@@ -32,4 +32,5 @@ export default defineNuxtConfig({
       },
     },
   },
+  devtools: { enabled: true },
 });

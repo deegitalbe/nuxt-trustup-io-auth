@@ -1,22 +1,13 @@
-import { useAuth } from "@deegital/vue-trustup-io-auth";
 import { defineNuxtRouteMiddleware, navigateTo } from "nuxt/app";
+import { useAuthRedirectService } from "#imports";
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  const path = window.location.origin + to.fullPath;
-
-  if (from.fullPath === to.fullPath && to.name === "authComponent") return;
-
-  const method = async () => {
-    const auth = useAuth();
-
-    const isAuthenticated = await auth.check(path);
-
-    if (!isAuthenticated) {
-      console.log(auth.authRedirection());
-
-      return navigateTo(auth.authRedirection(), { external: true });
-    }
+  const service = useAuthRedirectService({ from, to });
+  const navigate = async () => {
+    const { success, redirect } = await service.getRedirection();
+    if (!success) return;
+    const { path, isExternal: external } = redirect;
+    return navigateTo(path, { external });
   };
-
-  method();
+  navigate();
 });

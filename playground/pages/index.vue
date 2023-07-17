@@ -16,13 +16,11 @@
         >
           <div>
             <div class="text-[300px]">🎉</div>
-            <div>
-              {{ $auth.user }}
-            </div>
+            <div></div>
             <h1>Page index</h1>
             <NuxtLink to="/users">users</NuxtLink>
-            <div class="text-2xl text-gray-600 font-thin">
-              {{ auth }}
+            <div v-if="isOk()" class="text-2xl text-gray-600 font-thin">
+              {{ user.first_name }}
             </div>
           </div>
         </div>
@@ -34,13 +32,9 @@
 <script setup lang="ts">
 import { onMounted, ref, useAuth } from "#imports";
 
-// definePageMeta({
-//   middleware: "trustupIoAuthMiddleware",
-// });
-
 const isReady = ref<boolean>(false);
 
-const auth = useAuth();
+const { user, isOk } = useAuth();
 
 onMounted(() => {
   isReady.value = true;
