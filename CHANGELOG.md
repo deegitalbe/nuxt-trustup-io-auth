@@ -1,5 +1,11 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.1.1
+
+### Patch Changes
+
+- 4a270c7: Forcing load balancer port.
+
 ## 1.1.0
 
 ### Minor Changes
