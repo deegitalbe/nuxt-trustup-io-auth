@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./scripts/set_env.sh && \
+./scripts/set_env.sh && \
   docker run \
     -it \
     --rm \
