@@ -17,6 +17,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.nuxt-trustup-io-auth.tls=true
       - traefik.http.routers.nuxt-trustup-io-auth.rule=Host("nuxt-trustup-io-auth.docker.localhost")
+      - traefik.http.services.nuxt-trustup-io-auth.loadbalancer.server.port=${APP_PORT:-3000}
     networks:
       - applications
 networks:
