@@ -1,36 +1,27 @@
 #!/bin/bash
 
 if [ "$1" == "bootstrap" ]
-    then 
+    then
         ./scripts/bootstrap.sh
+        exit
 fi
 
 if [ "$1" == "start" ]
     then
         ./scripts/start.sh
-fi
-
-if [ "$1" == "restart" ]
-    then
-        ./scripts/restart.sh
+        exit
 fi
 
 if [ "$1" == "stop" ]
-    then 
+    then
         ./scripts/stop.sh
+        exit
 fi
 
-if [ "$1" == "version" ]
+if [ "$1" == "restart" ]
     then 
-        ./scripts/version.sh $*
+        ./scripts/restart.sh
+        exit
 fi
 
-if [ "$1" == "publish" ]
-    then 
-        ./scripts/publish.sh $*
-fi
-
-if [ "$1" == "yarn" ]
-    then 
-        ./scripts/app.sh $*
-fi
+./scripts/app.sh $*

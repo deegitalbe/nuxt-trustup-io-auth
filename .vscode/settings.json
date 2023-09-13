@@ -1,7 +1,8 @@
 {
-    "prettier.requireConfig": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "css.customData": ["./.vscode/css-data.json"]
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "css.customData": ["./.vscode/css-data.json"]
 }

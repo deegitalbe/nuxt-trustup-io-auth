@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   trustupIoAuth: {
     accessRoles: ["Super Admin"],
   },
-  modules: ["../src/module.ts"],
+  modules: ["@nuxt/devtools", "../src/module.ts"],
   runtimeConfig: {
     public: {
       trustupIoAuthUrl: "",

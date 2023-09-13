@@ -1,14 +1,24 @@
-version: '3.4'
-name: nuxt-trustup-io-auth
+version: "3.4"
+name: "nuxt-trustup-io-auth"
 services:
   app:
-    container_name: nuxt-trustup-io-auth-app
+    container_name: "nuxt-trustup-io-auth-app"
     build:
       context: .
       dockerfile: Dockerfile
       target: runner
+    image: nuxt-trustup-io-auth-app-local
     ports:
       - ${APP_PORT:-3000}:${APP_PORT:-3000}
       - ${WEBSOCKET_PORT:-24678}:${WEBSOCKET_PORT:-24678}
     volumes:
       - ./:/${PWD}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nuxt-trustup-io-auth.tls=true
+      - traefik.http.routers.nuxt-trustup-io-auth.rule=Host("nuxt-trustup-io-auth.docker.localhost")
+    networks:
+      - applications
+networks:
+  applications:
+    external: true
