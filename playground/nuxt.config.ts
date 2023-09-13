@@ -3,7 +3,7 @@ dotenv.config();
 
 export default defineNuxtConfig({
   trustupIoAuth: {
-    accessRoles: ["Worksite Admin"],
+    accessRoles: ["Super Admin"],
   },
   modules: ["../src/module.ts"],
   runtimeConfig: {

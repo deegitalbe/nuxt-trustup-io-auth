@@ -22,7 +22,7 @@ export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
 
     nuxt.options.runtimeConfig.public.trustupIoAuth = defu(
       nuxt.options.runtimeConfig.public.trustupIoAuth,
-      options
+      options,
     );
 
     extendPages((pages) => {
