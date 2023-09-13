@@ -1,6 +1,6 @@
 {
   "name": "@deegital/nuxt-trustup-io-auth",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Our module to authenticate users to auth.trustup.io",
   "files": [
     "dist"
