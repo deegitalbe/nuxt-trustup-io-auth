@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "@deegital/vue-3-trustup-io-loader": "^0.0.6",
-    "@deegital/vue-trustup-io-auth": "^1.0.3",
+    "@deegital/vue-trustup-io-auth": "^1.0.5",
     "@henrotaymcorp/vue-router-typed-query": "^0.0.1",
     "@nuxt/kit": "^3.6.3",
     "defu": "^6.1.2"

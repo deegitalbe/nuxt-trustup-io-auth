@@ -1,6 +1,8 @@
 <template>
   <div>
-    <slot v-if="shouldDisplayApp" />
+    <div v-if="shouldDisplayApp">
+      <slot />
+    </div>
     <div v-else>
       <AppLoader />
     </div>

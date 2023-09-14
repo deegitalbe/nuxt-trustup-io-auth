@@ -719,10 +719,10 @@
   dependencies:
     vue "^3.2.47"
 
-"@deegital/vue-trustup-io-auth@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@deegital/vue-trustup-io-auth/-/vue-trustup-io-auth-1.0.3.tgz#a576b8772298312561ff96de0e246d17136ac49b"
-  integrity sha512-E2JAllIOn8peV3BdK4N3ORaQozYpKFyPgbPoWFbP8fivnaITkma8urxM0DAFIGVLU1rSd7XGjFjRb52M6+ab+w==
+"@deegital/vue-trustup-io-auth@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@deegital/vue-trustup-io-auth/-/vue-trustup-io-auth-1.0.5.tgz#9d62c72315f1a09d869cff440c36253b3f2219cd"
+  integrity sha512-zdZUyAzuw2sf259fGCMWzKwZ5xzxtYnbsaAu8n1KfP1nUfnwZxBxQokydSGnqJkERVLbi0hX8Sl6cCx5nGleaA==
   dependencies:
     "@henrotaym/api-client" "^1.3.3"
     "@henrotaym/helpers" "^1.2.0"
