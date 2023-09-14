@@ -1,5 +1,11 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.1.2
+
+### Patch Changes
+
+- b25806a: Upgragind vue package to fix layout error.
+
 ## 1.1.1
 
 ### Patch Changes
