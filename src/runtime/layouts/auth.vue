@@ -4,7 +4,9 @@
       <slot />
     </div>
     <div v-else>
-      <AppLoader />
+      <slot name="loader">
+        <AppLoader />
+      </slot>
     </div>
   </div>
 </template>
