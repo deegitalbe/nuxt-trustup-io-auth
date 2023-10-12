@@ -1,11 +1,10 @@
-import { navigateTo, useRoute, useRouter } from "#app";
+import { navigateTo, useRoute } from "#app";
 import { useAuthCallbackService as useVueAuthCallbackService } from "@deegital/vue-trustup-io-auth";
 import { useVueApp } from "#imports";
 
 const useAuthCallbackService = async () => {
   const { getRedirection } = useVueAuthCallbackService({
     app: useVueApp(),
-    router: useRouter(),
     route: useRoute(),
   });
 

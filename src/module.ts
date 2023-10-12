@@ -61,6 +61,12 @@ export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
     });
 
     addRouteMiddleware({
+      name: "trustup-io-auth-callback",
+      path: resolve("./runtime/middleware/authCallback"),
+      global: true,
+    });
+
+    addRouteMiddleware({
       name: "trustup-io-auth",
       path: resolve("./runtime/middleware/auth"),
       global: true,
