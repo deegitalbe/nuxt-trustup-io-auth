@@ -1,5 +1,16 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.2.0
+
+### Minor Changes
+
+- 1378f21: Adding logout.
+- 2621fac: Adding loader slot to layout
+
+### Patch Changes
+
+- bddae54: Splitting synchronous and asynchronous middlewares.
+
 ## 1.1.2
 
 ### Patch Changes
