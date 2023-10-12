@@ -18,6 +18,9 @@
             <div class="text-[300px]">🎉</div>
             <div></div>
             <h1>Page index</h1>
+            <div>
+              <button @click="logout">logout</button>
+            </div>
             <NuxtLink to="/users">users</NuxtLink>
             <div v-if="isOk()" class="text-2xl text-gray-600 font-thin">
               {{ user.first_name }}
@@ -34,7 +37,7 @@ import { onMounted, ref, useAuth } from "#imports";
 
 const isReady = ref<boolean>(false);
 
-const { user, isOk } = useAuth();
+const { user, isOk, logout } = useAuth();
 
 onMounted(() => {
   isReady.value = true;
