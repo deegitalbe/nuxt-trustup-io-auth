@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="shouldDisplayApp">
+    <div v-if="isAuthenticated">
       <slot />
     </div>
     <div v-else>
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { AppLoader } from "@deegital/vue-3-trustup-io-loader";
-import { useAuthLayoutService } from "#imports";
+import { useAuth } from "#imports";
 
-const { shouldDisplayApp } = useAuthLayoutService();
+const { isAuthenticated } = useAuth();
 </script>

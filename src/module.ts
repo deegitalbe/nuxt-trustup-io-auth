@@ -27,7 +27,7 @@ export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
 
     extendPages((pages) => {
       pages.push({
-        name: "trustup-io-auth-callback",
+        name: TRUSTUP_IO_AUTH_CONFIG.AUTH_CALLBACK_NAME,
         path: TRUSTUP_IO_AUTH_CONFIG.AUTH_CALLBACK_PATH,
         file: resolve("./runtime/pages/trustup-io/auth/callback.vue"),
       });
@@ -72,6 +72,9 @@ export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
       global: true,
     });
 
-    addLayout({ src: resolve("./runtime/layouts/auth.vue") }, "auth");
+    addLayout(
+      { src: resolve("./runtime/layouts/auth.vue") },
+      TRUSTUP_IO_AUTH_CONFIG.AUTH_LAYOUT_NAME,
+    );
   },
 });
