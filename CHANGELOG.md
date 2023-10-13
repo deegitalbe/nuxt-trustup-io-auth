@@ -1,5 +1,11 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.2.1
+
+### Patch Changes
+
+- d064028: Using route name for callback
+
 ## 1.2.0
 
 ### Minor Changes
