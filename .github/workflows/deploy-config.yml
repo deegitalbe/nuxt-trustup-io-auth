@@ -20,16 +20,22 @@ jobs:
       TF_VAR_DOPPLER_ACCESS_TOKEN_USER: "${{ secrets.DOPPLER_ACCESS_TOKEN_USER }}"
       TF_VAR_PROJECT_NAME: "${{ github.event.repository.name }}"
     steps:
-      - name: Checkout repository
+      - 
+        name: Checkout repository
         uses: actions/checkout@v3
-      - name: Install Terraform
+      -
+        name: Install Terraform
         uses: hashicorp/setup-terraform@v2
-      - name: Terraform init
+        with:
+          terraform_version: ~1.5.7
+      - 
+        name: Terraform init
         run: |
           terraform init \
             -backend-config="access_key=${{ secrets.DIGITALOCEAN_SPACES_ACCESS_KEY_ID }}" \
             -backend-config="secret_key=${{ secrets.DIGITALOCEAN_SPACES_SECRET_ACCESS_KEY }}" \
             -backend-config="bucket=${{ secrets.DIGITALOCEAN_SPACES_TERRAFORM_STATES_BUCKET }}" \
             -backend-config="key=${{ github.event.repository.name }}-environments-main.tfstate"
-      - name: Terraform apply
+      - 
+        name: Terraform apply
         run: terraform apply -auto-approve
