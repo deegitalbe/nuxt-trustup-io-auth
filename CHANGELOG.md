@@ -1,5 +1,11 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.2.3
+
+### Patch Changes
+
+- 8298264: Middleware are not working as expected so we remove them temporarly.
+
 ## 1.2.2
 
 ### Patch Changes
