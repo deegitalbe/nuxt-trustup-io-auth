@@ -1,5 +1,12 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.2.2
+
+### Patch Changes
+
+- 36662cc: Using verbatim syntax for nuxt 3.7 support.
+- ee038f3: Fixing terraform config.
+
 ## 1.2.1
 
 ### Patch Changes
