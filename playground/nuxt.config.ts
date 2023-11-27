@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/devtools", "../src/module.ts"],
   runtimeConfig: {
     public: {
-      trustupIoAuthUrl: "",
+      trustupIoAuthUrl: "https://trustup-io-auth.docker.localhost",
     },
   },
   postcss: {

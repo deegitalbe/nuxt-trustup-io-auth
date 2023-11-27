@@ -29,7 +29,8 @@
     "test:watch": "vitest watch",
     "validate": "yarn lint && yarn test && yarn format",
     "build": "nuxt-module-build",
-    "release": "yarn build && changeset publish"
+    "release": "yarn build && changeset publish",
+    "upgrade:nuxt": "nuxi upgrade"
   },
   "repository": {
     "type": "git",
@@ -43,19 +44,19 @@
   "homepage": "https://github.com/deegitalbe/nuxt-trustup-io-auth#readme",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@nuxt/devtools": "^0.8.0",
-    "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/module-builder": "^0.4.0",
-    "@nuxt/schema": "^3.6.3",
-    "@nuxt/test-utils": "^3.6.3",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxt/devtools": "^1.0.3",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/module-builder": "^0.5.4",
+    "@nuxt/schema": "^3.8.2",
+    "@nuxt/test-utils": "^3.8.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/node": "^20.4.2",
     "autoprefixer": "^10.4.14",
     "changelogen": "^0.5.4",
-    "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "nuxt": "^3.6.3",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "nuxt": "^3.8.2",
     "postcss": "^8.4.26",
     "prettier": "^3.0.0",
     "tailwindcss": "^3.3.3",
@@ -65,9 +66,9 @@
   },
   "dependencies": {
     "@deegital/vue-3-trustup-io-loader": "^0.0.6",
-    "@deegital/vue-trustup-io-auth": "^1.1.3",
+    "@deegital/vue-trustup-io-auth": "^1.1.4",
     "@henrotaymcorp/vue-router-typed-query": "^0.0.1",
-    "@nuxt/kit": "^3.6.3",
+    "@nuxt/kit": "^3.8.2",
     "defu": "^6.1.2"
   }
 }

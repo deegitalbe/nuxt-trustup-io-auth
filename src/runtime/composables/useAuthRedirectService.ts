@@ -1,4 +1,4 @@
-import { RouteLocationNormalized } from "vue-router";
+import type { RouteLocationNormalized } from "vue-router";
 import { useAuthRedirectService as useVueAuthRedirectService } from "@deegital/vue-trustup-io-auth";
 import { useVueApp } from "#imports";
 
