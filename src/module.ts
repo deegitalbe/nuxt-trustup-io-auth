@@ -1,7 +1,7 @@
 import type { AuthPluginInstallOptions } from "@deegital/vue-trustup-io-auth";
 import { TRUSTUP_IO_AUTH_CONFIG } from "@deegital/vue-trustup-io-auth";
 import {
-  addRouteMiddleware,
+  // addRouteMiddleware,
   addPlugin,
   createResolver,
   defineNuxtModule,
@@ -60,17 +60,27 @@ export default defineNuxtModule<Omit<AuthPluginInstallOptions, "authUrl">>({
       from: resolve("./runtime/composables/index"),
     });
 
-    addRouteMiddleware({
-      name: "trustup-io-auth-callback",
-      path: resolve("./runtime/middleware/authCallback"),
-      global: true,
+    addImports({
+      name: "useAuthMiddleware",
+      from: resolve("./runtime/composables/index"),
     });
 
-    addRouteMiddleware({
-      name: "trustup-io-auth",
-      path: resolve("./runtime/middleware/auth"),
-      global: true,
+    addImports({
+      name: "useAuthCallbackMiddleware",
+      from: resolve("./runtime/composables/index"),
     });
+
+    // addRouteMiddleware({
+    //   name: "trustup-io-auth-callback",
+    //   path: resolve("./runtime/middleware/authCallback"),
+    //   // global: true,
+    // });
+
+    // addRouteMiddleware({
+    //   name: "trustup-io-auth",
+    //   path: resolve("./runtime/middleware/auth"),
+    //   // global: true,
+    // });
 
     addLayout(
       { src: resolve("./runtime/layouts/auth.vue") },
