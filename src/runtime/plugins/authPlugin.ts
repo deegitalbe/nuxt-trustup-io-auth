@@ -3,9 +3,16 @@ import { AuthServiceProviderConstructor } from "../providers";
 import { defineNuxtPlugin, useRuntimeConfig } from "#imports";
 
 const trustupIoAuthPlugin = defineNuxtPlugin(() => {
-  const {
-    public: { trustupIoAuth },
-  } = useRuntimeConfig();
+  const { public: config } = useRuntimeConfig();
+  const { trustupIoAuthUrl } = config;
+  const { accessRoles, authUrl, localStorageKey } = config.trustupIoAuth;
+  const trustupIoAuth = {
+    localStorageKey: localStorageKey || "trustup-io-auth-token",
+    authUrl: authUrl || trustupIoAuthUrl,
+    accessRoles,
+  };
+  config.trustupIoAuth = trustupIoAuth;
+
   const serviceFactory = AuthServiceFactoryConstructor();
   const authService = serviceFactory.create({
     storageKey: trustupIoAuth.localStorageKey,

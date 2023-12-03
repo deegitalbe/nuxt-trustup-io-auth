@@ -28,18 +28,11 @@ export default defineNuxtModule<AuthPluginOptions>({
 
     const { public: runtimeConfig } = nuxt.options.runtimeConfig;
 
-    runtimeConfig.trustupIoAuth = defu(
-      runtimeConfig.trustupIoAuth,
-      {
-        accessRoles,
-        localStorageKey,
-        authUrl,
-      },
-      {
-        localStorageKey: "trustup-io-auth-token",
-        authUrl: runtimeConfig.trustupIoAuthUrl,
-      },
-    );
+    runtimeConfig.trustupIoAuth = defu(runtimeConfig.trustupIoAuth, {
+      accessRoles,
+      localStorageKey,
+      authUrl,
+    });
 
     extendPages((pages) => {
       pages.push({
