@@ -1,5 +1,11 @@
 # @deegital/nuxt-trustup-io-auth
 
+## 1.3.0
+
+### Minor Changes
+
+- 66470bc: Refactor package to standalone version.
+
 ## 1.2.3
 
 ### Patch Changes
