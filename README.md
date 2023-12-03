@@ -12,129 +12,75 @@ Nuxt module for auth
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 
-## Quick Setup
+## Installation
 
 1. Add `@deegital/nuxt-trustup-io-auth` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add -D @deegital/nuxt-trustup-io-auth
+pnpm add @deegital/nuxt-trustup-io-auth
 
 # Using yarn
-yarn add --dev @deegital/nuxt-trustup-io-auth
+yarn add @deegital/nuxt-trustup-io-auth
 
 # Using npm
-npm install --save-dev @deegital/nuxt-trustup-io-auth
+npm install @deegital/nuxt-trustup-io-auth
 ```
 
 2. Add `@deegital/nuxt-trustup-io-auth` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      trustupIoAuthUrl: "",
+    },
+  },
   modules: [
     '@deegital/nuxt-trustup-io-auth'
   ],
-  trustupIoAuth: {}
+  trustupIoAuth: {
+    accessRoles: ["Developer", "Super Admin"],
+    localStorageKey: "auth", // OPTIONAL,
+    authUrl: "https://auth.trustup.io", // OPTIONAL,
+  }
 })
 ```
 
-## Usage/Examples
-
-```bash
-NUXT_PUBLIC_AUTH_TRUSTUP_IO_URL=https://auth.trustup.io
-```
-
-```javascript
-export default defineNuxtConfig({
-  runtimeConfig: {
-    public: {
-      authTrustupIoUrl: "",
-    },
-  },
-  ...
-  trustupIoAuth: {
-    localStorageKey: "auth_token", // the name of the key for the token, 'auth_token by default'
-  },
-  ...
-
-```
-In your app.vue you should use the layout to have the loader and hide if not authenticated
-```html
-  <template>
+3. Use layout to hide application if unauthenticated (usually in app.vue).
+```vue
+<template>
   <div>
-    <h1>App</h1>
-    <div>
-      <NuxtLayout name="auth-layout">
-        <NuxtPage />
-      </NuxtLayout>
-    </div>
+    <NuxtLayout :name="AUTH_LAYOUT_NAME">
+      <div>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </div>
+    </NuxtLayout>
   </div>
 </template>
 
-```
-If you want to display the user informations you can use the composable useAuth()
-
-```javascript
-    const auth = useAuth();
-
-    console.log(auth.user);
+<script setup lang="ts">
+const { AUTH_LAYOUT_NAME } = useAuthConfig();
+</script>
 ```
 
 That's it! You can now use nuxt-trustup-io-auth in your Nuxt app ✨
 
-## Development
+## Usage
+Package exposes `useAuth()` composable
 
-### Bootstrap module
-Find and replace all on all files (CMD+SHIFT+F):
-```shell
-  - nuxt-trustup-io-auth // nuxt-trustup-io-toasteo
-  - Nuxt module for auth // Our notification package for nuxt.
-  - trustupIoAuth // trustupIoToasteo
-  - @deegital // @deegital
-  - git@github.com:deegitalbe/nuxt-trustup-io-auth.git // git@github.com:deegitalbe/nuxt-trustup-io-toasteo.git
+```vue
+<script setup lang="ts">
+const {
+  isLoading,
+  user,
+  isAuthenticated,
+  logout,
+} = useAuth();
+</script>
 ```
-Start bootstrap script
-```shell
-./cli bootstrap
-```
-
-### Available commands
-```bash
-# Install dependencies
-./cli yarn install
-
-# Generate playground
-./cli yarn generate
-
-# Start project
-./cli start
-
-# Stop project
-./cli stop
-
-# Restart project
-./cli restart
-
-# Build the playground for production
-./cli yarn dev:build
-
-# Run ESLint
-./cli yarn lint
-
-# Run Vitest
-./cli yarn test
-./cli yarn test:watch
-
-# Validate your package (running linter & typecript validation)
-./cli yarn validate
-
-# Build the package for publication
-./cli yarn build
-
-# Release new version
-npm version patch
-```
-
 
 ### References
 Nuxt module development [reference](https://nuxt.com/docs/guide/going-further/modules)
